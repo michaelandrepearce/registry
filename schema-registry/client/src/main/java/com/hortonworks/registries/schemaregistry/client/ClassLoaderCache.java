@@ -58,8 +58,8 @@ public class ClassLoaderCache {
 
         SchemaRegistryClient.Configuration configuration = schemaRegistryClient.getConfiguration();
         loadingCache = CacheBuilder.newBuilder()
-                                   .maximumSize(((Number) configuration.getValue(CACHE_SIZE_KEY)).longValue())
-                                   .expireAfterAccess(((Number) configuration.getValue(CACHE_EXPIRY_INTERVAL_KEY)).longValue(),
+                                   .maximumSize(Long.valueOf( configuration.getValue(CACHE_SIZE_KEY)))
+                                   .expireAfterAccess(Long.valueOf(configuration.getValue(CACHE_EXPIRY_INTERVAL_KEY)),
                                                       TimeUnit.SECONDS)
                                    .build(cacheLoader);
 
